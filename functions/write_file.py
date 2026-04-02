@@ -19,9 +19,9 @@ schema_write_file = types.FunctionDeclaration(
     ),
 )
 
-def write_file(working_dir, file_path, content):
+def write_file(working_directory, file_path, content):
     try:
-        working_directory_absolute = os.path.abspath(working_dir)
+        working_directory_absolute = os.path.abspath(working_directory)
         target_dir = os.path.normpath(os.path.join(working_directory_absolute, file_path))
         valid = os.path.commonpath([working_directory_absolute, target_dir]) == working_directory_absolute
         if not valid:

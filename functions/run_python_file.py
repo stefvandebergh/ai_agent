@@ -47,7 +47,7 @@ def run_python_file(working_directory, file_path, args=None):
         # print(completed_process.stderr)
         if completed_process.returncode != 0:
             output_string += f"Process exited with code {completed_process.returncode}"
-        if completed_process.stderr and completed_process.stderr:
+        if completed_process.stdout and completed_process.stderr:
             output_string += "\nNo output produced"
         else:
             output_string += f"STDOUT: {completed_process.stdout}"

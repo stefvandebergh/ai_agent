@@ -1,5 +1,26 @@
 import os
 import subprocess
+from google.genai import types
+
+schema_run_python_file = types.FunctionDeclaration(
+    name="run_python_file",
+    description="Executes a Python file in a specified file path relative to the working directory, providing one string that is truncated if it gets longer than 10 000 characters",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="File path to execute Python file at, relative to the working directory (default is the working directory itself)",
+            ),
+            "args":types.Schema(
+                type=types.Type.ARRAY.STRING,
+                description= "Arguments that should be taken into the Python file called. The arguments are dependent on what file is called of course."
+
+            
+            ),
+        },
+    ),
+)
 
 def run_python_file(working_directory, file_path, args=None):
     try:
